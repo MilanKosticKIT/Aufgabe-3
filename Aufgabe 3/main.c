@@ -12,6 +12,9 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
         char* endOfword = line;
         char* wordLocation = (char*)malloc(sizeof(char) * (wordLength + 1));
         
+        //Mark word end.
+        *(wordStart + wordLength) = '\0';
+        
     }
     
     
