@@ -6,7 +6,8 @@ int jumpToEndOfWord(char** actualPosition);
 
 //MARK: - Working Code -
 int breakIntoWords(char* line, int maxWords, char* words[]){
-    for(int counter = 0; counter < maxWords; counter++) {
+    int wordCounter;
+    for(wordCounter = 0; wordCounter < maxWords; wordCounter++) {
         char* wordStart = line;
         int wordLength = jumpToEndOfWord(&line);
         char* endOfword = line;
@@ -18,8 +19,7 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
     }
     
     
-    return 0;
-    //TODO: Return correct value at end of breakIntoWords.
+    return wordCounter;
 }
 
 
