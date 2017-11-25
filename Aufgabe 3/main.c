@@ -78,16 +78,20 @@ typedef struct{
 }TestResult;
 
 
+void printTest(TestResult result, TestCase test){
+    
+}
+
+
 void Testing(TestCase test, int testNumber){
     int seizeOfLine = size(test.line);
     char** words = (char**)malloc(sizeof(char) * (seizeOfLine + 1));
     TestResult result;
     result.wordsCount = breakIntoWords(test.line, test.maxWords, words);
+    result.words = words;
+    printTest(result, test);
 }
 
-void printTest(TestResult result, TestCase test){
-    
-}
 
 int size(char* line){
     int counter;
