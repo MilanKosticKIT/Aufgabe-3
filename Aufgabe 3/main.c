@@ -1,15 +1,28 @@
 #include <stdio.h>
 
 int breakIntoWords(char* line, int maxWords, char* words[]);
-
+void jumpToEndOfWord(char** actualPosition);
 
 //MARK: - Working Code -
 int breakIntoWords(char* line, int maxWords, char* words[]){
-    
+    for(int counter = 0; counter < maxWords; counter++) {
+        char* wordStart = line;
+        jumpToEndOfWord(&line);
+        char* endOfword = line;
+        
+    }
     
     
     return 0;
     //TODO: Return correct value at end of breakIntoWords.
+}
+
+
+void jumpToEndOfWord(char** actualPostion){
+    //Sets the line pointer to the end of the word or char*.
+    for(; **actualPostion != '\0' || **actualPostion != ' '; *actualPostion++){
+        
+    }
 }
 
 
