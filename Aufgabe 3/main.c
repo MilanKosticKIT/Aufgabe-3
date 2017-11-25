@@ -68,6 +68,7 @@ int jumpToStart(int* going,char** line){
 //MARK: - Testing Area -
 typedef struct{
     char* line;
+    char input[20];
     int actualWords;
     int maxWords;
 }TestCase;
@@ -81,6 +82,19 @@ typedef struct{
 
 void printTest(TestResult result, TestCase test, int testNumber){
     printf("TEST %d: ", testNumber);
+    if(result.stauts){
+        printf("SUCESS\n");
+    }else{
+        printf("FAIL\n");
+    }
+    
+    //Input
+    printf("\tInput:\n");
+    for(int counter = 0; counter < test.actualWords; counter++){
+        printf("\t\t%s\n",test.input[counter]);
+    }
+    
+    //Output
     
 }
 
@@ -116,7 +130,7 @@ int size(char* line){
 int main(int argc, const char* argv[]){
     int testCounter = 1;
     TestCase tests[] = {
-        {"Hallo du", 2, 2}
+        {"Hallo du", 2, 2, {"Hallo", "du"}}
     };
     for(int counter = 0; counter < testCounter; counter++){
         Testing(tests[counter], counter);
