@@ -56,7 +56,7 @@ int jumpToEndOfWord(char** actualPostion){
 
 int jumpToStart(int* going,char** line){
     //Jumps over all ' ' that are at the begininig of the current (possible)
-    for(;**line == ' ' && **line != '\0';*line++){}
+    for(;**line == ' ' && **line != '\0'; *line++){}
     if (**line != '\0') {
         *going = 1;
     } else {
@@ -81,7 +81,8 @@ typedef struct{
 void Testing(TestCase test, int testNumber){
     int seizeOfLine = size(test.line);
     char** words = (char**)malloc(sizeof(char) * (seizeOfLine + 1));
-    int countOfWords = breakIntoWords(test.line, test.maxWords, words);
+    TestResult result;
+    result.wordsCount = breakIntoWords(test.line, test.maxWords, words);
 }
 
 void printTest(TestResult result, TestCase test){
