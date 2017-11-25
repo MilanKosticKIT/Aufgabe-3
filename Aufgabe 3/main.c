@@ -13,7 +13,7 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
         if(jumpToStart(&goinig, &line)){
             char* wordStart = line;
             int wordLength = jumpToEndOfWord(&line);
-            char* endOfword = line;
+//            char* endOfword = line;
             char* wordLocation = (char*)malloc(sizeof(char) * (wordLength + 1));
             
             //Mark word end.
