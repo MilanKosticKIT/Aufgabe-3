@@ -101,7 +101,13 @@ int size(char* line){
 
 //MARK: -
 int main(int argc, const char* argv[]){
-    
+    int testCounter = 1;
+    TestCase tests[] = {
+        {"Hallo du", 2, 2}
+    };
+    for(int counter = 0; counter < testCounter; counter++){
+        Testing(tests[counter], counter);
+    }
     
     return 0;
 }
