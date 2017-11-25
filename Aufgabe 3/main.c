@@ -122,7 +122,7 @@ void Testing(TestCase test, int testNumber){
 
 int size(char* line){
     int counter;
-    for (counter = 0; line != '\0'; counter++, line++) {}
+    for (counter = 0; *line != '\0'; counter++, line++) {}
     return counter;
 }
 
