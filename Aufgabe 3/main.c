@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int breakIntoWords(char* line, int maxWords, char* words[]);
 int jumpToEndOfWord(char** actualPosition);
 int jumpToStart(int* going,char** line);
+int size(char* line);
 
 //MARK: - Working Code -
 int breakIntoWords(char* line, int maxWords, char* words[]){
@@ -72,13 +74,19 @@ typedef struct{
 
 
 int Testing(TestCase test, int testNumber){
-    
+    int seizeOfLine = size(test.line);
+    char** words = (char**)malloc(sizeof(char) * (seizeOfLine + 1));
+    int countOfWords = breakIntoWords(test.line, test.maxWords, words);
     //TODO: Getting to void
     return 0;
     //TODO: Return correct value at end of Testing.
 }
 
-
+int size(char* line){
+    int counter;
+    for (counter = 0; line != '\0'; counter++, line++) {}
+    return counter;
+}
 
 //MARK: -
 int main(int argc, const char* argv[]){
