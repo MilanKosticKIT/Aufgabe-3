@@ -15,7 +15,7 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
         if(jumpToStart(&goinig, &line)){
             char* wordStart = line;
             int wordLength = jumpToEndOfWord(&line);
-//            char* endOfword = line;
+            //            char* endOfword = line;
             char* wordLocation = (char*)malloc(sizeof(char) * (wordLength + 1));
             
             //Mark word end.
@@ -37,7 +37,7 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
             if (*line == '\0') {
                 goinig = 0;
             } else {
-//                *line = '\0';
+                //                *line = '\0';
                 //Not Neccessary when using malloc
                 line++;
             }
@@ -75,10 +75,12 @@ typedef struct{
 typedef struct{
     char** words;
     int wordsCount;
+    int stauts;
 }TestResult;
 
 
-void printTest(TestResult result, TestCase test){
+void printTest(TestResult result, TestCase test, int testNumber){
+    printf("TEST %d: ", testNumber);
     
 }
 
@@ -89,7 +91,18 @@ void Testing(TestCase test, int testNumber){
     TestResult result;
     result.wordsCount = breakIntoWords(test.line, test.maxWords, words);
     result.words = words;
-    printTest(result, test);
+    if(result.wordsCount == test.maxWords){
+        if (result.wordsCount > test.actualWords) {
+            result.stauts = 0;
+        } else {
+            result.stauts = 1;
+        }
+    } else if(result.wordsCount == test.actualWords){
+        result.stauts = 1;
+    } else {
+        result.stauts = 0;
+    }
+    printTest(result, test, testNumber);
 }
 
 
