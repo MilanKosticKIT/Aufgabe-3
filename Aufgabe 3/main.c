@@ -42,6 +42,8 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
                 //Not Neccessary when using malloc
                 line++;
             }
+        }else if (!wordCounter){
+            wordCounter = wordCounter - 1;
         }
     }
     return wordCounter;
@@ -144,7 +146,7 @@ int main(int argc, const char* argv[]){
         {"Wenn du kommst", {"Wenn", "du", "kommst"}, 3, 2},
         {"Heute nicht", {"Heute", "nicht"}, 2, 3},
         {"Das wird nichts", {"Das", "wird", "nichts"}, 3, 0},
-        {"", {""}, 0, 6},//FIXME: Should return nothing.
+        {"", {""}, 0, 6},
         {" Achtung Leerzeichen vorne", {"Achtung", "Leerzeichen", "vorne"}, 3, 3},
         {"Mittendrin   Genügend", {"Mittendrin", "Genügend"}, 2, 2},
         {"Einsamkeit", {"Einsamkeit"}, 1, 1}
