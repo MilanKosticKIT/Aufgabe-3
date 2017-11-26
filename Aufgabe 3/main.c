@@ -71,7 +71,7 @@ int jumpToStart(int* going,char** line){
 //MARK: - Testing Area -
 typedef struct{
     char* line;
-    char* input[20];
+    char* input[20];//Contains all words of line
     int actualWords;
     int maxWords;
 }TestCase;
@@ -141,9 +141,9 @@ int main(int argc, const char* argv[]){
     int testCounter = 8;
     TestCase tests[] = {
         {"Hallo du", {"Hallo", "du"}, 2, 2},
-        {"Wenn du kommst", {"Wenn", "du"}, 3, 2},
+        {"Wenn du kommst", {"Wenn", "du", "kommst"}, 3, 2},
         {"Heute nicht", {"Heute", "nicht"}, 2, 3},
-        {"Das wird nichts", {""}, 3, 0},//FIXME: Input is not properly displayed.
+        {"Das wird nichts", {"Das", "wird", "nichts"}, 3, 0},
         {"", {""}, 0, 6},//FIXME: Should return nothing.
         {" Achtung Leerzeichen vorne", {"Achtung", "Leerzeichen", "vorne"}, 3, 3},
         {"Mittendrin   Genügend", {"Mittendrin", "Genügend"}, 2, 2},
