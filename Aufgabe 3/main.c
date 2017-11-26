@@ -91,9 +91,9 @@ void printTest(TestResult result, TestCase test, int testNumber){
     }
     
     //Input
-    printf("\tInput:\n");
+//    printf("\tInput:\n");
     for(int counter = 0; counter < test.actualWords; counter++){
-        printf("\t\t%s\n",test.input[counter]);
+        printf("\tInput:\t%s\n",test.input[counter]);
     }
     
     //Output
@@ -130,9 +130,10 @@ int size(char* line){
 
 //MARK: -
 int main(int argc, const char* argv[]){
-    int testCounter = 1;
+    int testCounter = 2;
     TestCase tests[] = {
-        {"Hallo du", {"Hallo", "du"}, 2, 2}
+        {"Hallo du", {"Hallo", "du"}, 2, 2},
+        {" Hallod u", {"Hallod", "u"}, 2, 2}
     };
     for(int counter = 0; counter < testCounter; counter++){
         Testing(tests[counter], counter);
