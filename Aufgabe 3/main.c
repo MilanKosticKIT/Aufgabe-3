@@ -44,7 +44,6 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
             }
         }
     }
-    //FIXME: Just the last word is stored visible.
     return wordCounter;
 }
 
@@ -93,12 +92,16 @@ void printTest(TestResult result, TestCase test, int testNumber){
     }
     
     //Input
+    printf("Line: \"%s\"\n", test.line);
 //    printf("\tInput:\n");
     for(int counter = 0; counter < test.actualWords; counter++){
         printf("\tInput:\t\"%s\"\n",test.input[counter]);
     }
+    printf("\tActualWords: %d\n", test.actualWords);
+    printf("\tMaxWords: %d\n", test.maxWords);
     printf("\n");
     //Output
+    printf("\tReturnedWords: %d\n", result.wordsCount);
     for (int counter = 0; counter < result.wordsCount; counter++) {
         printf("\tOutput:\t\"%s\"\n", result.words[counter]);
     }
@@ -135,11 +138,16 @@ int size(char* line){
 
 //MARK: -
 int main(int argc, const char* argv[]){
-    int testCounter = 3;
+    int testCounter = 8;
     TestCase tests[] = {
         {"Hallo du", {"Hallo", "du"}, 2, 2},
-        {" Hallod u", {"Hallod", "u"}, 2, 2},
-        {" Hallod u", {"Hallod", "u"}, 2, 2}
+        {"Wenn du kommst", {"Wenn", "du"}, 3, 2},
+        {"Heute nicht", {"Heute", "nicht"}, 2, 3},
+        {"Das wird nichts", {""}, 3, 0},//FIXME: Input is not properly displayed.
+        {"", {""}, 0, 6},//FIXME: Should return nothing.
+        {" Achtung Leerzeichen vorne", {"Achtung", "Leerzeichen", "vorne"}, 3, 3},
+        {"Mittendrin   Genügend", {"Mittendrin", "Genügend"}, 2, 2},
+        {"Einsamkeit", {"Einsamkeit"}, 1, 1}
     };
     for(int counter = 0; counter < testCounter; counter++){
         Testing(tests[counter], counter);
