@@ -19,7 +19,7 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
             char* wordLocation = (char*)malloc(sizeof(char) * (wordLength + 1));
             
             //Mark word end.
-            *(wordStart + wordLength) = '\0';
+            //*(wordStart + wordLength) = '\0';
             //USEFULL when i store it osomewhere else?
             //Possibility to leave the check for end of line into for-statement
             
@@ -50,7 +50,9 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
 int jumpToEndOfWord(char** actualPostion){
     //Sets the line pointer to the end of the word or char*.
     int counter;
-    for(counter = 0; **actualPostion != '\0' || **actualPostion != ' '; *actualPostion++, counter++){}
+    for(counter = 0; **actualPostion != '\0' && **actualPostion != ' ';counter++){
+        (*actualPostion)++;
+    }
     return counter;
 }
 
