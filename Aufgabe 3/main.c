@@ -15,6 +15,7 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
         if(jumpToStart(&goinig, &line)){
             char* wordStart = line;
             int wordLength = jumpToEndOfWord(&line);
+            line = wordStart;
             //            char* endOfword = line;
             char* wordLocation = (char*)malloc(sizeof(char) * (wordLength + 1));
             
@@ -43,6 +44,7 @@ int breakIntoWords(char* line, int maxWords, char* words[]){
             }
         }
     }
+    //FIXME: Just the last word is stored visible.
     return wordCounter;
 }
 
@@ -58,7 +60,7 @@ int jumpToEndOfWord(char** actualPostion){
 
 int jumpToStart(int* going,char** line){
     //Jumps over all ' ' that are at the begininig of the current (possible)
-    for(;**line == ' ' && **line != '\0'; *line++){}
+    for(;**line == ' ' && **line != '\0'; (*line)++){}
     if (**line != '\0') {
         *going = 1;
     } else {
@@ -93,11 +95,14 @@ void printTest(TestResult result, TestCase test, int testNumber){
     //Input
 //    printf("\tInput:\n");
     for(int counter = 0; counter < test.actualWords; counter++){
-        printf("\tInput:\t%s\n",test.input[counter]);
+        printf("\tInput:\t\"%s\"\n",test.input[counter]);
     }
-    
+    printf("\n");
     //Output
-    
+    for (int counter = 0; counter < result.wordsCount; counter++) {
+        printf("\tOutput:\t\"%s\"\n", result.words[counter]);
+    }
+    printf("________________________\n\n");
 }
 
 
@@ -130,9 +135,10 @@ int size(char* line){
 
 //MARK: -
 int main(int argc, const char* argv[]){
-    int testCounter = 2;
+    int testCounter = 3;
     TestCase tests[] = {
         {"Hallo du", {"Hallo", "du"}, 2, 2},
+        {" Hallod u", {"Hallod", "u"}, 2, 2},
         {" Hallod u", {"Hallod", "u"}, 2, 2}
     };
     for(int counter = 0; counter < testCounter; counter++){
