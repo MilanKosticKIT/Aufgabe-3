@@ -10,7 +10,7 @@ int size(char* line);
 //MARK: - Working Code -
 int breakIntoWords(char* line, int maxWords, char* words[]){
     int wordCounter;
-    int goinig = 1; //Wheter the algoriythm should go on.
+    int goinig = 1; //Whether the algoriythm should go on.
     for(wordCounter = 0; wordCounter < maxWords && goinig == 1; wordCounter++) {
         if(jumpToStart(&goinig, &line)){
             char* wordStart = line;
@@ -88,7 +88,7 @@ typedef struct{
 void printTest(TestResult result, TestCase test, int testNumber){
     printf("TEST %d: ", testNumber);
     if(result.stauts){
-        printf("SUCESS\n");
+        printf("SUCCESS\n");
     }else{
         printf("FAIL\n");
     }
